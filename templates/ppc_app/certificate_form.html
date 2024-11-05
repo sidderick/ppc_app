@@ -1,0 +1,19 @@
+<!-- ppc_app/templates/ppc_app/certificate_form.html -->
+{% extends 'ppc_app/base.html' %}
+
+{% block title %}PPC App - Certificate Form{% endblock %}
+
+{% if user.is_authenticated %}
+
+{% block content %}
+    <h1>Certificate Form</h1>
+    <p>Enter dates as MM/DD/YYYY</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <br>
+    <a href="{% url 'certificate_list' %}">Back to Certificate List</a>
+{% endblock %}
+{% endif %}

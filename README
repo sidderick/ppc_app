@@ -1,0 +1,33 @@
+LOGIN DETAILS
+
+ADMIN ACCOUNT
+username: admin
+password: ppcapp1234
+
+New admin accounts can be created with the prefix 'admin' when registering. eg. 'adminJohn' or 'adminChris'
+Admin accounts can complete all operations of the application
+
+USER ACCOUNT
+username: user
+password: ppcapp1234
+
+New user accounts can be created following the registration page
+Users can complete all operations apart from deleting records
+
+
+APPLICATION RUN
+
+Throughout development has been ran natively through PyCharm but can be ran in the terminal using this command:
+python manage.py runserver
+
+
+TESTING
+Video of a snippet of manual testing has been submitted in this repository.
+testing_recording.mp4
+
+
+VERSION DETAILS
+
+Application built in Pycharm Professional 2023.3.4 using:
+Python 3.9
+Django 4.2.11

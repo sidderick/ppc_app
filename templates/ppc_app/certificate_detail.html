@@ -1,0 +1,22 @@
+<!-- ppc_app/templates/ppc_app/certificate_detail.html -->
+{% extends 'ppc_app/base.html' %}
+
+{% block title %}PPC App - Certificate Detail{% endblock %}
+
+{% if user.is_authenticated %}
+
+{% block content %}
+    <h1>Certificate Detail</h1>
+    <p><strong>Certificate Number:</strong> {{ certificate.certNumber }}</p>
+    <p><strong>User ID:</strong> {{ certificate.userID }}</p>
+    <p><strong>Exempt:</strong> {% if certificate.exempt %}Yes{% else %}No{% endif %}</p>
+    <p><strong>Date Purchased:</strong> {{ certificate.datePurchased }}</p>
+    <p><strong>Expiry Date:</strong> {{ certificate.expiryDate }}</p>
+    <p><a href="{% url 'certificate_edit' certNumber=certificate.certNumber %}">Edit</a></p>
+    {% if user.is_authenticated and user.is_superuser %}
+        <p><a href="{% url 'certificate_delete' certNumber=certificate.certNumber %}">Delete</a></p>
+    {% endif %}
+    <br>
+    <a href="{% url 'certificate_list' %}">Back to Certificate List</a>
+{% endblock %}
+{% endif %}

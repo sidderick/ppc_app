@@ -1,0 +1,33 @@
+<!-- ppc_app/templates/ppc_app/certificate_list.html -->
+{% extends 'ppc_app/base.html' %}
+
+{% block title %}PPC App - Certificate List{% endblock %}
+
+{% if user.is_authenticated %}
+
+{% block content %}
+    <h1>Certificate List</h1>
+    <table class="table table-hover" border="1">
+        <tr>
+            <th>Certificate Number</th>
+            <th>User ID</th>
+            <th>Certificate Type</th>
+            <th>Exempt</th>
+            <th>Date Purchased</th>
+            <th>Expiry Date</th>
+        </tr>
+        {% for certificate in certificates %}
+            <tr>
+                <td><a href="{% url 'certificate_detail' certNumber=certificate.certNumber %}">{{ certificate.certNumber }}</a></td>
+                <td><a href="{% url 'person_detail' userID=certificate.userID %}">{{ certificate.userID }}</a></td>
+                <td>{{ certificate.certType }}</td>
+                <td>{% if certificate.exempt %}Yes{% else %}No{% endif %}</td>
+                <td>{{ certificate.datePurchased }}</td>
+                <td>{{ certificate.expiryDate }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{% url 'certificate_create' %}">Add New Certificate</a>
+{% endblock %}
+{% endif %}

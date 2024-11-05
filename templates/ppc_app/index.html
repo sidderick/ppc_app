@@ -1,0 +1,40 @@
+<!-- ppc_app/templates/ppc_app/index.html -->
+{% extends 'ppc_app/base.html' %}
+
+{% block title %}PPC App - Index{% endblock %}
+
+{% block content %}
+{%  if user.is_authenticated %}    
+    
+    <br/>
+    <h1>Welcome to the PPC App</h1>
+    <p>Choose an option:</p>
+    <ul>
+        <li><a href="{% url 'person_list' %}">View Person List</a></li>
+        <li><a href="{% url 'certificate_list' %}">View Certificate List</a></li>
+    </ul>
+
+{% else %}    
+    
+    <br/>
+    <h1>Login</h1>
+<form method="POST" action="">
+    {% csrf_token %}
+    <form>
+  <div class="mb-3">
+    <label for="usernameInput" class="form-label">Username</label>
+    <input type="text" class="form-control" name="username" required>
+  </div>
+  <div class="mb-3">
+    <label for="passwordInput" class="form-label">Password</label>
+    <input type="password" class="form-control" name="password" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+    
+</form>
+
+{% endif %}    
+    
+
+{% endblock %}

@@ -1,0 +1,18 @@
+<!-- ppc_app/templates/ppc_app/person_confirm_delete.html -->
+{% extends 'ppc_app/base.html' %}
+
+{% block title %}PPC App - Confirm Delete{% endblock %}
+
+{% if user.is_superuser %}
+
+
+{% block content %}
+    <h1>Confirm Delete</h1>
+    <p>Are you sure you want to delete {{ person.firstName }} {{ person.surname }}?</p>
+    <form action="{% url 'person_delete' userID=person.userID %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Confirm">
+    </form>
+    <a href="{% url 'person_list' %}">Cancel</a>
+{% endblock %}
+{% endif %}

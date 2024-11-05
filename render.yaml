@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: ppc_app
+    buildCommand: "./build.sh"
+    env: python
+    startCommand: "gunicorn ppc_app.wsgi:application"

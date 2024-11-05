@@ -1,0 +1,22 @@
+<!-- ppc_app/templates/ppc_app/person_detail.html -->
+{% extends 'ppc_app/base.html' %}
+
+{% block title %}PPC App - Person Detail{% endblock %}
+
+{% if user.is_authenticated %}
+
+{% block content %}
+    <h1>Person Detail</h1>
+    <p><strong>User ID:</strong> {{ person.userID }}</p>
+    <p><strong>Name:</strong> {{ person.firstName }} {{ person.surname }}</p>
+    <p><strong>NHS Number:</strong> {{ person.nhsNumber }}</p>
+    <p><strong>Date of Birth:</strong> {{ person.dateOfBirth }}</p>
+    <p><strong>Email:</strong> {{ person.email }}</p>
+    <p><a href="{% url 'person_edit' userID=person.userID %}">Edit</a></p>
+    {% if user.is_authenticated and user.is_superuser %}
+    <p><a href="{% url 'person_delete' userID=person.userID %}">Delete</a></p>
+    {% endif %}
+    <br>
+    <a href="{% url 'person_list' %}">Back to Person List</a>
+{% endblock %}
+{% endif %}

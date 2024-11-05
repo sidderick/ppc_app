@@ -1,0 +1,19 @@
+<!-- ppc_app/templates/ppc_app/certificate_confirm_delete.html -->
+{% extends 'ppc_app/base.html' %}
+
+{% block title %}PPC App - Confirm Delete{% endblock %}
+
+{% if user.is_superuser %}
+
+{% block content %}
+    <h1>Confirm Delete</h1>
+    <p>Are you sure you want to delete Certificate {{ certificate.certNumber }}?</p>
+    <form action="{% url 'certificate_delete' certNumber=certificate.certNumber %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Confirm">
+    </form>
+    <a href="{% url 'certificate_list' %}">Cancel</a>
+    
+
+{% endblock %}
+{% endif %}

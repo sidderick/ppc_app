@@ -1,0 +1,14 @@
+{% extends 'ppc_app/base.html' %}
+
+{% block content %}
+    
+    <form method="POST" action="">
+    {% csrf_token %}
+        
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Register</button>
+
+        
+    </form>    
+
+{% endblock %}
