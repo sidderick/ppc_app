@@ -176,3 +176,10 @@ def certificate_delete(request, certNumber):
     else:
         messages.success(request, 'Delete can only be completed by an admin')
         return render(request, 'ppc_app/index.html')
+
+def admin(request):
+    if request.user.is_superuser:
+        return render(request, 'admin')
+    else:
+        messages.success(request, 'Admin Login Required')
+        return redirect('index')
