@@ -1,3 +1,4 @@
 Django
 Gunicorn
 whitenoise
+python-dotenv
