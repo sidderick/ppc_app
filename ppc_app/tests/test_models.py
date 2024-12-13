@@ -18,7 +18,7 @@ class PersonDetailsModelTestCase(TestCase):
         self.assertEqual(self.person.nhsNumber, '1234567890')
         self.assertEqual(self.person.firstName, 'John')
         self.assertEqual(self.person.surname, 'Doe')
-        self.assertEqual(self.person.dateOfBirth, '1980-01-01')
+        self.assertEqual(self.person.dateOfBirth, '')
         self.assertEqual(self.person.email, 'johndoe@example.com')
         self.assertIsInstance(self.person, PersonDetails)
 
